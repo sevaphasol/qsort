@@ -1,6 +1,7 @@
+#include <stdio.h>
 #include "comp.h"
 
-int comp(const int* a, const int* b)
+int int_compare(const void* a, const void* b)
 {
-    return *a - *b;
+    return *((int*)a) - *((int*)b);
 }
