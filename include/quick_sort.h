@@ -1,7 +1,9 @@
 #ifndef QSORT_H__
 #define QSORT_H__
 
-void partition(int* arr, int left_index, int right_index);
+void quick_sort(int* arr, int left_index, int right_index);
+
+int partition(int* arr, int left_index, int right_index);
 
 int find_left(int* arr, int left_index, int middle_value);
 

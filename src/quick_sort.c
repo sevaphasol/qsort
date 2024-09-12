@@ -1,12 +1,27 @@
 #include <stdio.h>
-#include "qsort.h"
+#include "quick_sort.h"
 #include "colors.h"
 
-void partition(int* arr, int left_index, int right_index)
+void quick_sort(int* arr, int left_index, int right_index)
 {
+    if (left_index < right_index)
+    {
+        int middle_index = partition(arr, left_index, right_index);
+
+        quick_sort(arr, left_index, middle_index - 1);
+        quick_sort(arr, middle_index + 1, right_index);
+    }
+}
+
+int partition(int* arr, int left_index, int right_index)
+{
+    printf("\n");
+
     int middle_index = (left_index + right_index) / 2;
 
     int middle_value = arr[middle_index];
+
+    color_arr_print(arr, 10, middle_index, left_index, right_index);
 
     while (left_index != right_index)
     {
@@ -32,6 +47,9 @@ void partition(int* arr, int left_index, int right_index)
 
         // printf("\nl - %d m - %d r - %d\n", left_index, middle_index, right_index);
     }
+    printf("\n");
+
+    return middle_index;
 }
 
 int find_left(int* arr, int left_index, int middle_value)
