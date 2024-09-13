@@ -2,7 +2,7 @@
 #include "quick_sort.h"
 #include "colors.h"
 
-void quick_sort(void* arr, int count, int size, int(* comp)(const void *, const void*))
+void quick_sort(void* arr, const int count, const int size, int(* comp)(const void *, const void*))
 {
     char* arr_char_ptr = (char*) arr;
 
@@ -15,7 +15,7 @@ void quick_sort(void* arr, int count, int size, int(* comp)(const void *, const 
     }
 }
 
-int partition(char* arr, int count, int size, int(* comp)(const void*, const void*))
+int partition(char* arr, const int count, const int size, int(* comp)(const void*, const void*))
 {
     printf("\n");
 
@@ -25,7 +25,7 @@ int partition(char* arr, int count, int size, int(* comp)(const void*, const voi
 
     int middle_value = *(arr + middle_index*size);
 
-    color_arr_print((int*)arr, count, middle_index, left_index, right_index);
+    color_arr_print(arr, count, size, middle_index, left_index, right_index);
 
     while (left_index != right_index)
     {
@@ -39,7 +39,7 @@ int partition(char* arr, int count, int size, int(* comp)(const void*, const voi
 
         getchar();
 
-        color_arr_print((int*)arr, count, middle_index, left_index, right_index);
+        color_arr_print(arr, count, size, middle_index, left_index, right_index);
 
         // printf("\nl - %d m - %d r - %d\n", left_index, middle_index, right_index);
 
@@ -47,7 +47,7 @@ int partition(char* arr, int count, int size, int(* comp)(const void*, const voi
 
         getchar();
 
-        color_arr_print((int*)arr, count, middle_index, left_index, right_index);
+        color_arr_print(arr, count, size, middle_index, left_index, right_index);
 
         // printf("\nl - %d m - %d r - %d\n", left_index, middle_index, right_index);
     }
@@ -56,7 +56,7 @@ int partition(char* arr, int count, int size, int(* comp)(const void*, const voi
     return middle_index;
 }
 
-int find_left(char* arr, int size, int left_index, int middle_index, int(* comp)(const void *, const void*))
+int find_left(char* arr, const int size, int left_index, int middle_index, int(* comp)(const void *, const void*))
 {
     while (comp((void*)(arr + left_index*size), (void*)(arr + middle_index*size)) < 0)
     {
@@ -65,7 +65,7 @@ int find_left(char* arr, int size, int left_index, int middle_index, int(* comp)
     return left_index;
 }
 
-int find_right(char* arr, int size, int right_index, int middle_index, int(* comp)(const void *, const void*))
+int find_right(char* arr, const int size, int right_index, int middle_index, int(* comp)(const void *, const void*))
 {
     while (comp((void*)(arr + right_index*size), (void*)(arr + middle_index*size)) > 0)
     {
@@ -74,7 +74,7 @@ int find_right(char* arr, int size, int right_index, int middle_index, int(* com
     return right_index;
 }
 
-int swap_left_and_right(char* arr, int size, int left_index, int right_index, int middle_index)
+int swap_left_and_right(char* arr, const int size, int left_index, int right_index, int middle_index)
 {
     if (left_index != right_index)
     {
@@ -88,15 +88,25 @@ int swap_left_and_right(char* arr, int size, int left_index, int right_index, in
             middle_index = left_index;
         }
 
-        swap_ints((void*)(arr + left_index*size), (void*)(arr + right_index*size));
+        swap_elems((char*)(arr + left_index*size), (char*)(arr + right_index*size), size);
     }
 
     return middle_index;
 }
 
-void swap_ints(void* ptr1, void* ptr2)
+void swap_elems(char* ptr1, char* ptr2, const int size)
 {
-    int tmp = *(int*)ptr1;
-    *(int*)ptr1 = *(int*)ptr2;
-    *(int*)ptr2 = tmp;
+    char buf[size] = {0};
+    for (int i = 0; i < size; i++)
+    {
+        buf[i] = *(ptr1 + i);
+    }
+    for (int i = 0; i < size; i++)
+    {
+        *(ptr1 + i) = *(ptr2 + i);
+    }
+    for (int i = 0; i < size; i++)
+    {
+        *(ptr2 + i) = buf[i];
+    }
 }

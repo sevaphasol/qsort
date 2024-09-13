@@ -27,7 +27,7 @@ void reset_color()
 	printf(WHITE_CODE);
 }
 
-void color_arr_print(int* arr, int count, int middle_index, int left_index, int right_index)
+void color_arr_print(char* arr, int count, int size, int middle_index, int left_index, int right_index)
 {
     for (int i = 0; i < count; i++)
     {
@@ -35,27 +35,27 @@ void color_arr_print(int* arr, int count, int middle_index, int left_index, int 
         {
             if (i == left_index || i == right_index)
             {
-                purple_print("%d", (*(arr + i)));
+                purple_print("%c", (*(arr + i*size)));
             }
             else
             {
-                yellow_print("%d", (int)(*(arr + i)));
+                yellow_print("%c", (*(arr + i*size)));
             }
             printf(" ");
         }
         else if (i == left_index || i == right_index)
         {
-            green_print("%d", (int)(*(arr + i)));
+            green_print("%c", (*(arr + i*size)));
             printf(" ");
         }
         else if (i < middle_index)
         {
-            blue_print("%d", (int)(*(arr + i)));
+            blue_print("%c", (*(arr + i*size)));
             printf(" ");
         }
         else if (i > middle_index)
         {
-            red_print("%d", (int)(*(arr + i)));
+            red_print("%c", (*(arr + i*size)));
             printf(" ");
         }
     }

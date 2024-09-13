@@ -22,6 +22,6 @@ void set_color(const char *color_code);
 
 void reset_color();
 
-void color_arr_print(int* arr, int count, int middle_index, int left_index, int right_index);
+void color_arr_print(char* arr, int count, int size, int middle_index, int left_index, int right_index);
 
 #endif // COLORS_H__
