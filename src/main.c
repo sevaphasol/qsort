@@ -12,13 +12,14 @@ int main()
     int arr4[10] = {6, 9, 4, 2, 5, 8, 1, 0, 7, 3};
     int arr5[10] = {9, 4, 3, 5, 7, 8, 5, 1, 6, 2}; // doesn't work with repeated elemets
     char arr6[10] = {'b', 'a', 'd', 'c', 'f', 'e', 'h', 'g', 'j', 'i'};
-    quick_sort(arr6, 10, sizeof(char), &char_compare);
+    quick_sort(arr5, 10, sizeof(int), &int_compare);
+    // qsort(arr5, 10, sizeof(int), &int_compare);
     // qsort(arr1, 10, 4, &int_compare);
 
     for (int i = 0; i < 10; i++)
     {
 
-        printf("%c ", arr6[i]);
+        printf("%d ", arr5[i]);
     }
     printf("\n");
 

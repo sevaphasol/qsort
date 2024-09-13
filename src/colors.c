@@ -35,27 +35,27 @@ void color_arr_print(char* arr, int count, int size, int middle_index, int left_
         {
             if (i == left_index || i == right_index)
             {
-                purple_print("%c", (*(arr + i*size)));
+                purple_print("%d", (*(arr + i*size)));
             }
             else
             {
-                yellow_print("%c", (*(arr + i*size)));
+                yellow_print("%d", (*(arr + i*size)));
             }
             printf(" ");
         }
         else if (i == left_index || i == right_index)
         {
-            green_print("%c", (*(arr + i*size)));
+            green_print("%d", (*(arr + i*size)));
             printf(" ");
         }
         else if (i < middle_index)
         {
-            blue_print("%c", (*(arr + i*size)));
+            blue_print("%d", (*(arr + i*size)));
             printf(" ");
         }
         else if (i > middle_index)
         {
-            red_print("%c", (*(arr + i*size)));
+            red_print("%d", (*(arr + i*size)));
             printf(" ");
         }
     }

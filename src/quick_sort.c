@@ -43,6 +43,22 @@ int partition(char* arr, const int count, const int size, int(* comp)(const void
 
         // printf("\nl - %d m - %d r - %d\n", left_index, middle_index, right_index);
 
+        if (*(arr + left_index*size) == *(arr + middle_index*size) && // bag with arr5
+            *(arr + right_index*size) == *(arr + middle_index*size) &&
+            left_index != right_index)
+        {
+            if (left_index < middle_index)
+            {
+                left_index++;
+                continue;
+            }
+            else if (right_index > middle_index)
+            {
+                right_index--;
+                continue;
+            }
+        }
+
         middle_index = swap_left_and_right(arr, size, left_index, right_index, middle_index);
 
         getchar();
